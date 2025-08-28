@@ -15,6 +15,20 @@
     <div class="card shadow-sm">
         <div class="card-body">
 
+             @if (session()->has('success'))
+                <div class="alert alert-dismissible alert-success fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <!-- Filtros -->
             <div class="row mb-3">
                 <div class="col-md-6">
@@ -24,22 +38,10 @@
                             placeholder="Buscar ambientes...">
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <select wire:model="perPage" class="form-select rounded shadow-sm">
-                        <option value="10">10 por página</option>
-                        <option value="25">25 por página</option>
-                        <option value="50">50 por página</option>
-                        <option value="100">100 por página</option>
-                    </select>
-                </div>
+
             </div>
 
-            <!-- Mensagem de sucesso -->
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
+            
 
             <!-- Tabela -->
             <div class="table-responsive">
@@ -58,25 +60,31 @@
                             <tr>
                                 <td>{{ $ambiente->nome }}</td>
                                 <td>{{ $ambiente->descricao }}</td>
-                                <td>{{ $ambiente->status == 1 ? "Ativo" : "Inativo" }}</td>
+                                <td>{{ $ambiente->status == 1 ? 'Ativo' : 'Inativo' }}</td>
                                 <td>
                                     <a href="{{ route('ambientes.edit', $ambiente->id) }}"
                                         class="btn btn-sm btn-outline-success me-1" data-bs-toggle="tooltip"
                                         title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
+
+                                    <button wire:click="delete({{ $ambiente->id }})"
+                                        class="btn btn-sm btn-outline-danger me-1" title="Excluir"
+                                        wire:confirm="Tem certeza?">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
 
-                            @empty
+                        @empty
                             <tr>
                                 <td colspan="5" class="text-center text-muted">Nenhum ambiente encontrado.</td>
                             </tr>
-
                         @endforelse
                     </tbody>
                 </table>
             </div>
+            {{ $ambientes->links() }}
         </div>
     </div>
 </div>

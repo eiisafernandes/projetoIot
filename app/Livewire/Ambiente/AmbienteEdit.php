@@ -31,7 +31,7 @@ class AmbienteEdit extends Component
             'status' => $this->status
         ]);
 
-        session()->flash('message', 'Ambiente atualizado com sucesso!');
+        session()->flash('success', 'Ambiente atualizado com sucesso!');
         return redirect()->route('ambientes.list');
     }
 

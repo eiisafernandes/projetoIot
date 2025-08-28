@@ -21,8 +21,18 @@ class AmbienteList extends Component
 
         $ambientes = Ambiente::all();
         $ambientes = Ambiente::where('nome', 'like', "%{$this->search}%")
-            ->paginate($this->perPage);
+            ->paginate(15);
 
         return view('livewire.ambiente.ambiente-list', compact('ambientes'));
+    }
+
+    public function delete($id)
+    {
+        $ambiente = Ambiente::find($id);
+        if($ambiente != null){
+            $ambiente->delete();
+        }
+
+        session()->flash('success', 'Sensor deletado com sucesso.');
     }
 }

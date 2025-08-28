@@ -20,7 +20,7 @@ class AmbienteCreate extends Component
             
         ]);
 
-        session()->flash('message', 'Sucesso!');
+        session()->flash('success', 'Sucesso ao cadastrar!');
         return redirect()->route('ambientes.list');
     }
 
