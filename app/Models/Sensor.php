@@ -12,6 +12,7 @@ class Sensor extends Model
     protected $fillable = [
         'ambiente_id',
         'codigo',
+        'descricao',
         'tipo',
         'status'
     ];
