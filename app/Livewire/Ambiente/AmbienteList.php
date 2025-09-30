@@ -33,6 +33,6 @@ class AmbienteList extends Component
             $ambiente->delete();
         }
 
-        session()->flash('success', 'Sensor deletado com sucesso.');
+        session()->flash('success', 'Ambiente deletado com sucesso.');
     }
 }

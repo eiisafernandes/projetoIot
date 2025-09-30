@@ -51,7 +51,7 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Status</th>
-                            <th>Ação</th>
+                            <th>Ações</th>
 
                         </tr>
                     </thead>

@@ -13,13 +13,14 @@ class SensorEdit extends Component
     protected function rules()
     {
         return [
-            'codigo' => 'max:255|unique:sensors,codigo,' . $this->sensorId,
+            'codigo' => 'required|max:255|unique:sensors,codigo,' . $this->sensorId,
             'tipo' => 'max:255'
         ];
     }
 
     protected $messages = [
         'codigo.unique' => 'O campo deve ser único',
+        'codigo.required' => 'O campo é obrigatório',
         'codigo.max' => 'O número máximo de caracteres é 80',
         'tipo.max' => 'O número máximo de caracteres é 255',
 
@@ -47,6 +48,8 @@ class SensorEdit extends Component
         $this->validate();
 
         $sensor = Sensor::findOrFail($this->sensorId);
+
+
 
         $sensor->update([
             'codigo' => $this->codigo,

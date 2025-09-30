@@ -32,6 +32,6 @@ class RegistroList extends Component
             $registro->delete();
         }
 
-        session()->flash('success', 'registro deletado com sucesso.');
+        session()->flash('success', 'Registro deletado com sucesso.');
     }
 }

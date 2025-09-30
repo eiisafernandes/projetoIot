@@ -60,7 +60,7 @@
                             <th>Tipo</th>
                             <th>Ambiente</th>
                             <th>Status</th>
-                            <th>Ação</th>
+                            <th>Ações</th>
 
                         </tr>
                     </thead>

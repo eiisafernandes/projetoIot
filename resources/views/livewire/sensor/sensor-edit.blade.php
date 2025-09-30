@@ -66,7 +66,7 @@
 
                         <div class="d-flex justify-content-between mt-3">
                             <button type="submit"
-                                class="btn btn-primary w-48 rounded-pill shadow-sm">Cadastrar</button>
+                                class="btn btn-primary w-48 rounded-pill shadow-sm">Editar</button>
                             <a href="{{ route('sensor.list') }}"
                                 class="btn btn-secondary w-48 rounded-pill shadow-sm">Voltar</a>
                         </div>
