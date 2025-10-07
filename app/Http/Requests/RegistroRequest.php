@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
 
 class RegistroRequest extends FormRequest
 {
@@ -22,19 +25,34 @@ class RegistroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sensor_id' => 'required',
-            'valor' => 'required',
-            'unidade' => 'required',
-            'data_hora' => 'required'
+            'cod_sensor' => 'required',
+            'valor' => 'required|numeric',
+            'unidade' => 'required'
         ];
     }
 
-    public function messages(){
+    protected function failedValidation(Validator $validator)
+    {
+        //Se a requisição vier da API, retorna JSON
+        if ($this->expectsJson()) {
+            throw new HttpResponseException(response()->json([
+                'success' => false,
+                'message' => 'Erro de Validação',
+                'errors' => $validator->errors()
+            ], 422));
+        }
+
+        //Se for Livewire, lança uma exceção padrão do Laravel
+        throw new ValidationException($validator);
+    }
+
+    public function messages()
+    {
         return [
-            'sensor_id.required' => 'Campo obrigatório',
+            'cod_sensor.required' => 'Campo obrigatório',
             'valor.required' => 'Campo obrigatório',
-            'unidade.required' => 'Campo obrigatório',
-            'data_hora.required' => 'Campo obrigatório'
+            'valor.numeric' => 'O valor do sensor precisa ser númerico',
+            'unidade.required' => 'Campo obrigatório'
         ];
     }
 }
