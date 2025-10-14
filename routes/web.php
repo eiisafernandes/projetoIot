@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Sensor\SensorCreate;
 use App\Livewire\Sensor\SensorEdit;
 use App\Livewire\Sensor\SensorList;
-
+use App\Livewire\Sensor\SensorStatus;
 
 Route::get('/', Dashboard::class);
 Route::get('registro', RegistroList::class);
@@ -24,3 +24,4 @@ Route::get('ambiente/edit/{id}', AmbienteEdit::class)->name('ambientes.edit');
 Route::get('sensor/create', SensorCreate::class)->name('sensor.create');
 Route::get('sensor/list', SensorList::class)->name('sensor.list');
 Route::get('sensor/edit/{id}', SensorEdit::class)->name('sensor.edit');
+Route::get('sensor/status', SensorStatus::class)->name('sensor.status');
