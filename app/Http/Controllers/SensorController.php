@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class SensorController extends Controller
 {
-    public function visualizar(Request $request){
-        $sensor = Sensor::where('codigo', $request->codigo)->first();
+    public function visualizar($codigo){
+        $sensor = Sensor::where('codigo', $codigo)->first();
 
         if (!$sensor) { //negação
             return response()->json(['error' => 'sensor não encontrado'], 404);
