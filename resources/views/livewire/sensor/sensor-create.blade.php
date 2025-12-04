@@ -29,7 +29,7 @@
                         <div class="mb-3">
                             <label for="descricao" class="form-label">Descrição</label>
                             <input type="text" class="form-control" id="descricao" wire:model="descricao">
-                            
+
 
                         </div>
 
@@ -46,7 +46,7 @@
                         <div class="mb-3">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" aria-label="status" id="status" wire:model="status">
-                                <option selected>Selecione seu status</option>
+                                <option selected>Selecione</option>
                                 <option value="1">Ativo</option>
                                 <option value="0">Inativo</option>
                             </select>
@@ -57,8 +57,9 @@
 
                         <div class="mb-3">
                             <label for="ambiente_id" class="form-label">Ambiente</label>
-                            <select class="form-select" aria-label="ambiente_id" id="ambiente_id"
-                                wire:model="ambiente_id">
+                            <select class="form-select" id="ambiente_id" wire:model.defer="ambiente_id">
+
+                                <option selected>Selecione o ambiente</option>
                                 @foreach ($ambientes as $ambiente)
                                     <option value="{{ $ambiente->id }}"> {{ $ambiente->nome }}</option>
                                 @endforeach

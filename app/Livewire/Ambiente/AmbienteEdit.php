@@ -10,6 +10,19 @@ class AmbienteEdit extends Component
 
     public $ambienteId, $nome, $descricao, $status;
 
+     protected function rules()
+    {
+        return [
+            'nome' => 'required',
+            'status' => 'required'
+        ];
+    }
+
+    protected $messages = [
+        'nome.required' => 'O campo é obrigatório',
+        'status.required' => 'O campo é obrigatório'
+    ];
+
     public function mount($id)
     {
         $ambiente = Ambiente::findOrFail($id);
@@ -22,6 +35,7 @@ class AmbienteEdit extends Component
 
      public function update()
     {
+        $this->validate();
 
         $ambiente = Ambiente::findOrFail($this->ambienteId);
 

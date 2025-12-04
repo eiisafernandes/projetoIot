@@ -18,7 +18,9 @@
                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="nome" wire:model="nome" placeholder="Nome do Ambiente">
-                            
+                            @error('nome')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Campo descricao -->
@@ -31,10 +33,14 @@
                         <div class="mb-3">
                             <label for="status" class="form-label">Status</label>
                             <select class="form-select" aria-label="status" id="status" wire:model="status">
-                                <option selected>Selecione seu status</option>
+                                <option>Selecione os status</option>
                                 <option value="1">Ativo</option>
                                 <option value="0">Inativo</option>
                             </select>
+                            @error('status')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
 
                         <div class="d-flex justify-content-between mt-3">
                             <button type="submit" class="btn btn-primary w-48 rounded-pill shadow-sm">Cadastrar</button>
