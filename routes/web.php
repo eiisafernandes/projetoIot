@@ -3,6 +3,7 @@
 use App\Livewire\Ambiente\AmbienteCreate;
 use App\Livewire\Ambiente\AmbienteEdit;
 use App\Livewire\Ambiente\AmbienteList;
+use App\Livewire\Auth\Login;
 use App\Livewire\Dashboard;
 
 use App\Livewire\Registro\RegistroList;
@@ -13,7 +14,8 @@ use App\Livewire\Sensor\SensorEdit;
 use App\Livewire\Sensor\SensorList;
 use App\Livewire\Sensor\SensorStatus;
 
-Route::get('/', Dashboard::class);
+Route::get('login', Login::class)->name('login');
+Route::get('/', Dashboard::class)->name('dashboard');
 Route::get('registro', RegistroList::class);
 
 Route::get('ambiente/create', AmbienteCreate::class)-> name('ambientes.create');
